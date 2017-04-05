@@ -28,7 +28,7 @@ class FyydRequest {
         
         //https://api.fyyd.de/search/iphone/2
         
-        guard self.state != .new else{
+        guard self.state == .new else{
             return
         }
         
