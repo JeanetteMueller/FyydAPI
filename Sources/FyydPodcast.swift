@@ -50,7 +50,26 @@ class FyydPodcast {
     var text        : String?{   get{ return data["description"] as? String } }
     var summary     : String?{   get{ return data["subtitle"] as? String } }
     
-    var fyydUrl     : String{   get{ return data["url_fyyd"] as! String } }
+    var episodesCount: Int {
+        get{
+            if let count = data["count_episodes"] as? Int{
+                return count
+            }
+            return 0
+        }
+    }
+    
+    var fyydUrl     : String{
+        get{
+            if let url = data["fyydURL"] as? String{
+                return url
+            }else if let url = data["url_fyyd"] as? String{
+                return url
+            }else {
+                return String.init(format: "https://fyyd.de/podcast/%d", data["id"] as! Int)
+            }
+        }
+    }
     var fyydId      : Int{      get{ return data["id"] as! Int } }
     var fyydSlug    : String{   get{ return data["slug"] as! String } }
     
