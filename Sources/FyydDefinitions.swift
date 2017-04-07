@@ -8,6 +8,30 @@
 
 import Foundation
 
+let kfyydAuthClientId   :String = "fyydAuthClientId"
+let kfyydAuthToken      :String = "kfyydAuthToken"
+
+
+
+public enum FyydAPIError {}
+
+public extension FyydAPIError{
+    public enum Auth {
+        case failed, succeed, canceled
+        
+        var localizedDescription:String{
+            get{
+                return "localizedDescription"
+            }
+        }
+    }
+    
+    
+}
+
+public typealias FyydAPILoginHandler = (FyydAPIError.Auth?) -> Swift.Void
+
+
 let FyydCategories = [
     FyydCategory(identifier: 1, andSlug:"arts", andName:"network_category_1301".localized, andImage:"kunst"),
     FyydCategory(identifier: 8, andSlug:"business", andName:"network_category_1321".localized, andImage:"wirtschaft"),
@@ -26,3 +50,5 @@ let FyydCategories = [
     FyydCategory(identifier: 62, andSlug:"technology", andName:"network_category_1318".localized, andImage:"technologie"),
     FyydCategory(identifier: 67, andSlug:"tv-film", andName:"network_category_1309".localized, andImage:"tv_film")
 ]
+
+
