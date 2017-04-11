@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SafariServices
+import CoreData
 
 
 class FyydAPI {
@@ -22,18 +23,18 @@ class FyydAPI {
     
     var clientID:String?{
         get{
-            return self.getFyydCliendId()
+            return FyydAPI.getFyydCliendId()
         }
     }
     var token:String?{
         get{
-            return self.getFyydToken()
+            return FyydAPI.getFyydToken()
         }
     }
     
     var isLoggedIn: Bool{
         get{
-            if self.getFyydCliendId() != nil && self.getFyydToken() != nil{
+            if FyydAPI.getFyydCliendId() != nil && FyydAPI.getFyydToken() != nil{
                 return true
             }
             return false
@@ -50,7 +51,7 @@ class FyydAPI {
         
         self.authHandler = handler
         
-        var urlComponents = URLComponents.init(string: "https://fyyd.de")!
+        var urlComponents = URLComponents.init(string: kfyydUrlBase)!
         
         urlComponents.path = "/oauth/authorize"
         
@@ -92,6 +93,16 @@ class FyydAPI {
                     if let token = fragmentParts.last{
                         self.setFyydToken(token)
                         
+                        let request = FyydRequest()
+                        request.loadAccountInfo(callback: { (data) in
+                            
+                            if let id = data?["id"]  as? Int{
+                                self.setFyydUserID(id)
+                                print("got User ID")
+                            }
+                            
+                        })
+                        
                         if let handler = self.authHandler{
                             handler(nil)
                         }
@@ -115,7 +126,9 @@ class FyydAPI {
         return false
     }
     
-    private func getFyydCliendId() -> String?{
+    // MARK: Helper
+    
+    class func getFyydCliendId() -> String?{
         let defaults = UserDefaults.standard
         
         if let result = defaults.value(forKey: kfyydAuthClientId) {
@@ -138,7 +151,7 @@ class FyydAPI {
         defaults.synchronize()
     }
     
-    private func getFyydToken() -> String?{
+    class func getFyydToken() -> String?{
         let defaults = UserDefaults.standard
         
         if let result = defaults.value(forKey: kfyydAuthToken) {
@@ -160,5 +173,29 @@ class FyydAPI {
         }
         defaults.synchronize()
     }
+    
+    class func getFyydUserID() -> Int?{
+        let defaults = UserDefaults.standard
+        
+        if let result = defaults.value(forKey: kfyydUserID) {
+            if result is Int{
+                return result as? Int
+            }
+        }
+        
+        return nil
+    }
+    
+    private func setFyydUserID(_ key:Int?){
+        print("setFyydUserID", key as Any)
+        let defaults = UserDefaults.standard
+        if let k = key{
+            defaults.set(k, forKey:kfyydUserID)
+        }else{
+            defaults.removeObject(forKey:kfyydUserID)
+        }
+        defaults.synchronize()
+    }
+    
 }
 

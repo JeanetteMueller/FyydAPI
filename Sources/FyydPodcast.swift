@@ -66,11 +66,11 @@ class FyydPodcast {
             }else if let url = data["url_fyyd"] as? String{
                 return url
             }else {
-                return String.init(format: "https://fyyd.de/podcast/%d", data["id"] as! Int)
+                return String.init(format: "https://fyyd.de/podcast/%d", data["id"] as! Int32)
             }
         }
     }
-    var fyydId      : Int{      get{ return data["id"] as! Int } }
+    var fyydId      : Int32{      get{ return data["id"] as! Int32 } }
     var fyydSlug    : String{   get{ return data["slug"] as! String } }
     
     

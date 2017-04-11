@@ -10,8 +10,10 @@ import Foundation
 
 let kfyydAuthClientId   :String = "fyydAuthClientId"
 let kfyydAuthToken      :String = "kfyydAuthToken"
+let kfyydUserID         :String = "kfyydUserID"
 
-
+let kfyydUrlBase        :String = "https://fyyd.de"
+let kfyydUrlApi         :String = "https://api.fyyd.de"
 
 public enum FyydAPIError {}
 
