@@ -22,14 +22,21 @@ class FyydPodcast {
             return ""
         }
     }
-    var title       : String{   get{ return data["title"] as! String } }
+    var title       : String{
+        get{
+            if let t = data["title"] as? String{
+                return t
+            }
+            return ""
+        }
+    }
     var image       : String?{
         get{
             
-            if let feed = data["imgURL"]{
-                return feed as? String
-            }else if let feed = data["img_url"]{
-                return feed as? String
+            if let image = data["imgURL"] as? String, !image.isEqual(""){
+                return image
+            }else if let image = data["img_url"] as? String, !image.isEqual(""){
+                return image
             }
             return nil
         }
@@ -38,10 +45,10 @@ class FyydPodcast {
     var www         : String?{
         get{
             
-            if let feed = data["htmlURL"]{
-                return feed as? String
-            }else if let feed = data["html_url"]{
-                return feed as? String
+            if let html = data["htmlURL"] as? String, !html.isEqual(""){
+                return html
+            }else if let html = data["html_url"] as? String, !html.isEqual(""){
+                return html
             }
             return nil
         }
@@ -59,19 +66,27 @@ class FyydPodcast {
         }
     }
     
-    var fyydUrl     : String{
+    var fyydUrl     : String?{
         get{
-            if let url = data["fyydURL"] as? String{
+            if let url = data["fyydURL"] as? String, !url.isEqual(""){
                 return url
-            }else if let url = data["url_fyyd"] as? String{
+            }else if let url = data["url_fyyd"] as? String, !url.isEqual(""){
                 return url
-            }else {
-                return String.init(format: "https://fyyd.de/podcast/%d", data["id"] as! Int32)
+            }else if self.fyydId > 0{
+                return String.init(format: "https://fyyd.de/podcast/%d", self.fyydId)
             }
+            return nil
         }
     }
-    var fyydId      : Int32{      get{ return data["id"] as! Int32 } }
-    var fyydSlug    : String{   get{ return data["slug"] as! String } }
+    var fyydId      : Int32{
+        get{
+            if let id = data["id"] as? Int32{
+                return id
+            }
+            return -1
+        }
+    }
+    var fyydSlug    : String?{   get{ return data["slug"] as? String } }
     
     
     
