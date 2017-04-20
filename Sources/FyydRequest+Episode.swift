@@ -48,7 +48,14 @@ extension FyydRequest{
                     
                     var e = [FyydEpisode]()
                     
-                    if let items = data["data"] as? [String:Any]{
+                    if let items = data["data"] as? [Any]{
+                        for item in items{
+                            let i = item as! [String:Any]
+                            if parameters["title"] as? String == i["title"] as? String{
+                                e.append(FyydEpisode.init(i))
+                            }
+                        }
+                    }else if let items = data["data"] as? [String:Any]{
                         for item in Array(items.values){
                             let i = item as! [String:Any]
                             if parameters["title"] as? String == i["title"] as? String{

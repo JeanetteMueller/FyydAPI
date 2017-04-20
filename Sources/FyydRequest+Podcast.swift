@@ -45,8 +45,6 @@ extension FyydRequest {
             case .success:
                 if let data = response.result.value as? [String:Any]{
                     
-                    
-                    
                     if let item = data["data"] as? [String:Any]{
                         
                         self.state = .done
@@ -93,10 +91,12 @@ extension FyydRequest {
         
         var urlComponents = URLComponents.init(string: kfyydUrlApi)!
         var query = [URLQueryItem]()
+        let params = [String:Any]()
+        let method: HTTPMethod = .get
         
         if let search = searchTerm{
             urlComponents.path = String.init(format: "/search/%@/%d", search.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)!, count);
-            
+
         }else if let cat = categorie{
             urlComponents.path = "/category"
             
@@ -117,7 +117,14 @@ extension FyydRequest {
         }
         self.state = .loading
         
-        let aRequest = self.sessionManager.request(url)
+        var headers: HTTPHeaders?
+        if let token = FyydAPI.getFyydToken(){
+            headers = [
+                "Authorization": "Bearer \(token)"
+            ]
+        }
+        
+        let aRequest = self.sessionManager.request(url, method: method, parameters: params, headers: headers)
         
         //        if let user = feedRecord.username, let pass = feedRecord.password{
         //            if !user.isEqual("") && !pass.isEqual(""){
@@ -133,7 +140,11 @@ extension FyydRequest {
                     
                     var p = [FyydPodcast]()
                     
-                    if let items = data["data"] as? [String:Any]{
+                    if let items = data["data"] as? [Any]{
+                        for item in items{
+                            p.append(FyydPodcast.init(item as! [String:Any]))
+                        }
+                    }else if let items = data["data"] as? [String:Any]{
                         for item in Array(items.values){
                             p.append(FyydPodcast.init(item as! [String:Any]))
                         }

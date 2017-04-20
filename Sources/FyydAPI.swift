@@ -7,9 +7,7 @@
 //
 
 import Foundation
-import Alamofire
-import SafariServices
-import CoreData
+
 
 
 class FyydAPI {
@@ -43,88 +41,6 @@ class FyydAPI {
     
     var authHandler: FyydAPILoginHandler?
     
-    func authenticate(_ clientId:String, handler: @escaping FyydAPILoginHandler) {
-        
-        //https://fyyd.de/oauth/authorize?client_id=###
-        
-        self.setFyydCliendId(clientId)
-        
-        self.authHandler = handler
-        
-        var urlComponents = URLComponents.init(string: kfyydUrlBase)!
-        
-        urlComponents.path = "/oauth/authorize"
-        
-        var query = [URLQueryItem]()
-        
-        query.append(URLQueryItem.init(name: "client_id", value: clientId))
-        
-        urlComponents.queryItems = query
-        
-        guard let url = urlComponents.url else {
-            return
-        }
-        
-        let svc = SFSafariViewController.init(url: url)
-        
-        if let appDelegate = UIApplication.shared.delegate{
-            
-            if let root = appDelegate.window??.rootViewController{
-                
-                root.present(svc, animated: true, completion: {
-                    print("interner safari ist offen")
-                })
-            }
-        }
-    }
-    
-    func logout(){
-        self.setFyydCliendId(nil)
-        self.setFyydToken(nil)
-    }
-    
-    func handleOpen(_ url:URL) -> Bool{
-        
-        if let fragment = url.fragment{
-            if fragment.substring(to: 5) == "token"{
-                
-                let fragmentParts = fragment.components(separatedBy: "=")
-                if fragmentParts.count == 2{
-                    if let token = fragmentParts.last{
-                        self.setFyydToken(token)
-                        
-                        let request = FyydRequest()
-                        request.loadAccountInfo(callback: { (data) in
-                            
-                            if let id = data?["id"]  as? Int{
-                                self.setFyydUserID(id)
-                                print("got User ID")
-                            }
-                            
-                        })
-                        
-                        if let handler = self.authHandler{
-                            handler(nil)
-                        }
-                        
-                        let appDelegate = UIApplication.shared.delegate
-                        
-                        if let root = appDelegate?.window??.rootViewController{
-                            
-                            root.dismiss(animated: true, completion: nil)
-                        }
-                        
-                        return true
-                    }
-                }
-            }
-        }
-        if let handler = self.authHandler{
-            
-            handler(FyydAPIError.Auth.failed)
-        }
-        return false
-    }
     
     // MARK: Helper
     
@@ -140,7 +56,7 @@ class FyydAPI {
         return nil
     }
     
-    private func setFyydCliendId(_ key:String?){
+    func setFyydCliendId(_ key:String?){
         print("setFyydCliendId", key as Any)
         let defaults = UserDefaults.standard
         if let k = key{
@@ -163,7 +79,7 @@ class FyydAPI {
         return nil
     }
     
-    private func setFyydToken(_ key:String?){
+    func setFyydToken(_ key:String?){
         print("setFyydToken", key as Any)
         let defaults = UserDefaults.standard
         if let k = key{
@@ -186,7 +102,7 @@ class FyydAPI {
         return nil
     }
     
-    private func setFyydUserID(_ key:Int?){
+    func setFyydUserID(_ key:Int?){
         print("setFyydUserID", key as Any)
         let defaults = UserDefaults.standard
         if let k = key{

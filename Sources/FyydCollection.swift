@@ -42,7 +42,8 @@ class FyydCollection{
         get{
             
             if let value = data["layoutImageURL"] as? String{
-                return value
+                
+                return kfyydUrlBase.appending(value)
             }
             return nil
         }
@@ -51,7 +52,7 @@ class FyydCollection{
         get{
             
             if let value = data["thumbImageURL"] as? String{
-                return value
+                return kfyydUrlBase.appending(value)
             }
             return nil
         }
@@ -60,12 +61,12 @@ class FyydCollection{
         get{
             
             if let value = data["microImageURL"] as? String{
-                return value
+                return kfyydUrlBase.appending(value)
             }
             return nil
         }
     }
-    var url: String{
+    var fyydUrl: String{
         get{
             
             if let url = data["url"] as? String{
@@ -77,15 +78,17 @@ class FyydCollection{
     
     var podcasts: [FyydPodcast]?{
         get{
-            
-            if let podcasts = data["podcasts"] as? [String:Any]{
-                var result = [FyydPodcast]()
-                
-                
-                for item in Array(podcasts.values){
+            var result = [FyydPodcast]()
+            if let podcasts = data["podcasts"] as? [Any]{
+                for item in podcasts{
                     result.append(FyydPodcast.init(item as! [String:Any]))
                 }
-                
+            }else if let items = data["podcasts"] as? [String:Any]{
+                for item in Array(items.values){
+                    result.append(FyydPodcast.init(item as! [String:Any]))
+                }
+            }
+            if result.count > 0{
                 return result
             }
             return nil

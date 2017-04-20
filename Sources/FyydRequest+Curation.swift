@@ -43,7 +43,11 @@ extension FyydRequest {
                     
                     var c = [FyydCuration]()
                     
-                    if let items = data["data"] as? [String:Any]{
+                    if let items = data["data"] as? [Any]{
+                        for item in items{
+                            c.append(FyydCuration.init(item as! [String:Any]))
+                        }
+                    }else if let items = data["data"] as? [String:Any]{
                         for item in Array(items.values){
                             c.append(FyydCuration.init(item as! [String:Any]))
                         }
@@ -110,7 +114,11 @@ extension FyydRequest {
                     
                     var c = [FyydCuration]()
                     
-                    if let items = data["data"] as? [String:Any]{
+                    if let items = data["data"] as? [Any]{
+                        for item in items{
+                            c.append(FyydCuration.init(item as! [String:Any]))
+                        }
+                    }else if let items = data["data"] as? [String:Any]{
                         for item in Array(items.values){
                             c.append(FyydCuration.init(item as! [String:Any]))
                         }
