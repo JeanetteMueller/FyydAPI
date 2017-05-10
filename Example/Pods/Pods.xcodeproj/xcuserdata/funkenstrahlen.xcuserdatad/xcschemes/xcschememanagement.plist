@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Nimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,17 +42,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>07BCBB950AE00ABBAB32E2092F6B72F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1321E318D10CFDC9F5B93A7952492CCD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B7EF16AE1369A36E5C921EC7C8BB01D</key>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DA276C2424054DE0EB711F662815E46E</key>
+		<key>A46EEB45978257A82E74C1838AE24EEB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
