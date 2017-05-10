@@ -24,9 +24,9 @@ Swift API for iOS to work with fyyd.de
   s.homepage         = 'https://github.com/JeanetteMueller/fyydAPI'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'JeanetteMueller' => 'TODO' }
+  s.author           = { 'JeanetteMueller' => 'github@themaverick.de' }
   s.source           = { :git => 'https://github.com/JeanetteMueller/fyydAPI.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/JeanetteMueller'
 
   s.ios.deployment_target = '8.0'
 
