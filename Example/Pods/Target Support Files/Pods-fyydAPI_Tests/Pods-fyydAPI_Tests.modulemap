@@ -1,0 +1,6 @@
+framework module Pods_fyydAPI_Tests {
+  umbrella header "Pods-fyydAPI_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
