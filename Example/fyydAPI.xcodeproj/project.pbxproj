@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		06BF8A6F27103FFAB3D4C9AD /* Pods_fyydAPI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF485FB295B497DD0EA0C91 /* Pods_fyydAPI_Tests.framework */; };
+		226B7DF51EC33CD000AF8F6F /* FyydAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DE61EC33CD000AF8F6F /* FyydAction.swift */; };
+		226B7DF61EC33CD000AF8F6F /* FyydAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DE71EC33CD000AF8F6F /* FyydAPI.swift */; };
+		226B7DF71EC33CD000AF8F6F /* FyydAPI+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DE81EC33CD000AF8F6F /* FyydAPI+Auth.swift */; };
+		226B7DF81EC33CD000AF8F6F /* FyydCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DE91EC33CD000AF8F6F /* FyydCategory.swift */; };
+		226B7DF91EC33CD000AF8F6F /* FyydCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DEA1EC33CD000AF8F6F /* FyydCollection.swift */; };
+		226B7DFA1EC33CD000AF8F6F /* FyydCuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DEB1EC33CD000AF8F6F /* FyydCuration.swift */; };
+		226B7DFB1EC33CD000AF8F6F /* FyydDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DEC1EC33CD000AF8F6F /* FyydDefinitions.swift */; };
+		226B7DFC1EC33CD000AF8F6F /* FyydEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DED1EC33CD000AF8F6F /* FyydEpisode.swift */; };
+		226B7DFD1EC33CD000AF8F6F /* FyydPodcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DEE1EC33CD000AF8F6F /* FyydPodcast.swift */; };
+		226B7DFE1EC33CD000AF8F6F /* FyydRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DEF1EC33CD000AF8F6F /* FyydRequest.swift */; };
+		226B7DFF1EC33CD000AF8F6F /* FyydRequest+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DF01EC33CD000AF8F6F /* FyydRequest+Account.swift */; };
+		226B7E001EC33CD000AF8F6F /* FyydRequest+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DF11EC33CD000AF8F6F /* FyydRequest+Collection.swift */; };
+		226B7E011EC33CD000AF8F6F /* FyydRequest+Curation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DF21EC33CD000AF8F6F /* FyydRequest+Curation.swift */; };
+		226B7E021EC33CD000AF8F6F /* FyydRequest+Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DF31EC33CD000AF8F6F /* FyydRequest+Episode.swift */; };
+		226B7E031EC33CD000AF8F6F /* FyydRequest+Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B7DF41EC33CD000AF8F6F /* FyydRequest+Podcast.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -29,6 +44,21 @@
 
 /* Begin PBXFileReference section */
 		0D2C3BF068AF5053AA402459 /* Pods-fyydAPI_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fyydAPI_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fyydAPI_Tests/Pods-fyydAPI_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		226B7DE61EC33CD000AF8F6F /* FyydAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FyydAction.swift; sourceTree = "<group>"; };
+		226B7DE71EC33CD000AF8F6F /* FyydAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FyydAPI.swift; sourceTree = "<group>"; };
+		226B7DE81EC33CD000AF8F6F /* FyydAPI+Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FyydAPI+Auth.swift"; sourceTree = "<group>"; };
+		226B7DE91EC33CD000AF8F6F /* FyydCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FyydCategory.swift; sourceTree = "<group>"; };
+		226B7DEA1EC33CD000AF8F6F /* FyydCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FyydCollection.swift; sourceTree = "<group>"; };
+		226B7DEB1EC33CD000AF8F6F /* FyydCuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FyydCuration.swift; sourceTree = "<group>"; };
+		226B7DEC1EC33CD000AF8F6F /* FyydDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FyydDefinitions.swift; sourceTree = "<group>"; };
+		226B7DED1EC33CD000AF8F6F /* FyydEpisode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FyydEpisode.swift; sourceTree = "<group>"; };
+		226B7DEE1EC33CD000AF8F6F /* FyydPodcast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FyydPodcast.swift; sourceTree = "<group>"; };
+		226B7DEF1EC33CD000AF8F6F /* FyydRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FyydRequest.swift; sourceTree = "<group>"; };
+		226B7DF01EC33CD000AF8F6F /* FyydRequest+Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FyydRequest+Account.swift"; sourceTree = "<group>"; };
+		226B7DF11EC33CD000AF8F6F /* FyydRequest+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FyydRequest+Collection.swift"; sourceTree = "<group>"; };
+		226B7DF21EC33CD000AF8F6F /* FyydRequest+Curation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FyydRequest+Curation.swift"; sourceTree = "<group>"; };
+		226B7DF31EC33CD000AF8F6F /* FyydRequest+Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FyydRequest+Episode.swift"; sourceTree = "<group>"; };
+		226B7DF41EC33CD000AF8F6F /* FyydRequest+Podcast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FyydRequest+Podcast.swift"; sourceTree = "<group>"; };
 		2897852CBA1E2B145D54A991 /* Pods-fyydAPI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fyydAPI_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fyydAPI_Tests/Pods-fyydAPI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2EF485FB295B497DD0EA0C91 /* Pods_fyydAPI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fyydAPI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E63BCE67EA8147C3E03BE8 /* Pods-fyydAPI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fyydAPI_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-fyydAPI_Example/Pods-fyydAPI_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -42,9 +72,9 @@
 		607FACE51AFB9204008FA782 /* fyydAPI_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fyydAPI_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		6EC69ACDE6A0FB1BA63FC95D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		9AA641551A81F984543B5B25 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		B65FEFF0D85AE4A8829D31BC /* fyydAPI.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = fyydAPI.podspec; path = ../fyydAPI.podspec; sourceTree = "<group>"; };
+		6EC69ACDE6A0FB1BA63FC95D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		9AA641551A81F984543B5B25 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B65FEFF0D85AE4A8829D31BC /* fyydAPI.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = fyydAPI.podspec; path = ../fyydAPI.podspec; sourceTree = "<group>"; };
 		C1045AC13A2DCDD186CBC7F2 /* Pods-fyydAPI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fyydAPI_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fyydAPI_Example/Pods-fyydAPI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F0FF490A1814B25C617C1E08 /* Pods_fyydAPI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fyydAPI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,6 +102,21 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				226B7DE61EC33CD000AF8F6F /* FyydAction.swift */,
+				226B7DE71EC33CD000AF8F6F /* FyydAPI.swift */,
+				226B7DE81EC33CD000AF8F6F /* FyydAPI+Auth.swift */,
+				226B7DE91EC33CD000AF8F6F /* FyydCategory.swift */,
+				226B7DEA1EC33CD000AF8F6F /* FyydCollection.swift */,
+				226B7DEB1EC33CD000AF8F6F /* FyydCuration.swift */,
+				226B7DEC1EC33CD000AF8F6F /* FyydDefinitions.swift */,
+				226B7DED1EC33CD000AF8F6F /* FyydEpisode.swift */,
+				226B7DEE1EC33CD000AF8F6F /* FyydPodcast.swift */,
+				226B7DEF1EC33CD000AF8F6F /* FyydRequest.swift */,
+				226B7DF01EC33CD000AF8F6F /* FyydRequest+Account.swift */,
+				226B7DF11EC33CD000AF8F6F /* FyydRequest+Collection.swift */,
+				226B7DF21EC33CD000AF8F6F /* FyydRequest+Curation.swift */,
+				226B7DF31EC33CD000AF8F6F /* FyydRequest+Episode.swift */,
+				226B7DF41EC33CD000AF8F6F /* FyydRequest+Podcast.swift */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for fyydAPI */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -361,8 +406,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226B7E011EC33CD000AF8F6F /* FyydRequest+Curation.swift in Sources */,
+				226B7E031EC33CD000AF8F6F /* FyydRequest+Podcast.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				226B7DF51EC33CD000AF8F6F /* FyydAction.swift in Sources */,
+				226B7DF71EC33CD000AF8F6F /* FyydAPI+Auth.swift in Sources */,
+				226B7DFF1EC33CD000AF8F6F /* FyydRequest+Account.swift in Sources */,
+				226B7DF81EC33CD000AF8F6F /* FyydCategory.swift in Sources */,
+				226B7E001EC33CD000AF8F6F /* FyydRequest+Collection.swift in Sources */,
+				226B7DFB1EC33CD000AF8F6F /* FyydDefinitions.swift in Sources */,
+				226B7DF61EC33CD000AF8F6F /* FyydAPI.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				226B7DFA1EC33CD000AF8F6F /* FyydCuration.swift in Sources */,
+				226B7DFD1EC33CD000AF8F6F /* FyydPodcast.swift in Sources */,
+				226B7DFE1EC33CD000AF8F6F /* FyydRequest.swift in Sources */,
+				226B7E021EC33CD000AF8F6F /* FyydRequest+Episode.swift in Sources */,
+				226B7DF91EC33CD000AF8F6F /* FyydCollection.swift in Sources */,
+				226B7DFC1EC33CD000AF8F6F /* FyydEpisode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
