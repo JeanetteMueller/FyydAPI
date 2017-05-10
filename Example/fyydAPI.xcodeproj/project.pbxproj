@@ -99,7 +99,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		607FACC71AFB9204008FA782 = {
+		226B7E041EC340AF00AF8F6F /* fyydAPI */ = {
 			isa = PBXGroup;
 			children = (
 				226B7DE61EC33CD000AF8F6F /* FyydAction.swift */,
@@ -111,12 +111,28 @@
 				226B7DEC1EC33CD000AF8F6F /* FyydDefinitions.swift */,
 				226B7DED1EC33CD000AF8F6F /* FyydEpisode.swift */,
 				226B7DEE1EC33CD000AF8F6F /* FyydPodcast.swift */,
+				226B7E051EC340C600AF8F6F /* Request */,
+			);
+			name = fyydAPI;
+			sourceTree = "<group>";
+		};
+		226B7E051EC340C600AF8F6F /* Request */ = {
+			isa = PBXGroup;
+			children = (
 				226B7DEF1EC33CD000AF8F6F /* FyydRequest.swift */,
 				226B7DF01EC33CD000AF8F6F /* FyydRequest+Account.swift */,
 				226B7DF11EC33CD000AF8F6F /* FyydRequest+Collection.swift */,
 				226B7DF21EC33CD000AF8F6F /* FyydRequest+Curation.swift */,
 				226B7DF31EC33CD000AF8F6F /* FyydRequest+Episode.swift */,
 				226B7DF41EC33CD000AF8F6F /* FyydRequest+Podcast.swift */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		607FACC71AFB9204008FA782 = {
+			isa = PBXGroup;
+			children = (
+				226B7E041EC340AF00AF8F6F /* fyydAPI */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for fyydAPI */,
 				607FACE81AFB9204008FA782 /* Tests */,
