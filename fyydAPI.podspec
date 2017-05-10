@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'fyydAPI'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of fyydAPI.'
+  s.summary          = 'Swift API to work with fyyd.de'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,14 +18,14 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Swift API for iOS to work with fyyd.de
                        DESC
 
-  s.homepage         = 'https://github.com/funkenstrahlen/fyydAPI'
+  s.homepage         = 'https://github.com/JeanetteMueller/fyydAPI'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'funkenstrahlen' => 'mail@stefantrauth.de' }
-  s.source           = { :git => 'https://github.com/funkenstrahlen/fyydAPI.git', :tag => s.version.to_s }
+  s.author           = { 'JeanetteMueller' => 'TODO' }
+  s.source           = { :git => 'https://github.com/JeanetteMueller/fyydAPI.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'

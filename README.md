@@ -22,7 +22,7 @@ pod "fyydAPI"
 
 ## Author
 
-funkenstrahlen, mail@stefantrauth.de
+Jeanette Mueller
 
 ## License
 
