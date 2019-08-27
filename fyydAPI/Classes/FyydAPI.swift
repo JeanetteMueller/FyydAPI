@@ -8,29 +8,27 @@
 
 import Foundation
 
-
-
-class FyydAPI {
+public class FyydAPI {
     
-    static let shared: FyydAPI = {
+    public static let shared: FyydAPI = {
         
         let instance = FyydAPI()
         
         return instance
     }()
     
-    var clientID:String?{
+    public var clientID:String?{
         get{
             return FyydAPI.getFyydCliendId()
         }
     }
-    var token:String?{
+    public var token:String?{
         get{
             return FyydAPI.getFyydToken()
         }
     }
     
-    var isLoggedIn: Bool{
+    public var isLoggedIn: Bool{
         get{
             if FyydAPI.getFyydCliendId() != nil && FyydAPI.getFyydToken() != nil{
                 return true
@@ -39,12 +37,12 @@ class FyydAPI {
         }
     }
     
-    var authHandler: FyydAPILoginHandler?
+    public var authHandler: FyydAPILoginHandler?
     
     
     // MARK: Helper
     
-    class func getFyydCliendId() -> String?{
+    public class func getFyydCliendId() -> String?{
         let defaults = UserDefaults.standard
         
         if let result = defaults.value(forKey: kfyydAuthClientId) {
@@ -56,7 +54,7 @@ class FyydAPI {
         return nil
     }
     
-    func setFyydCliendId(_ key:String?){
+    public func setFyydCliendId(_ key:String?){
         log("setFyydCliendId", key as Any)
         let defaults = UserDefaults.standard
         if let k = key{
@@ -67,7 +65,7 @@ class FyydAPI {
         defaults.synchronize()
     }
     
-    class func getFyydToken() -> String?{
+    public class func getFyydToken() -> String?{
         let defaults = UserDefaults.standard
         
         if let result = defaults.value(forKey: kfyydAuthToken) {
@@ -79,7 +77,7 @@ class FyydAPI {
         return nil
     }
     
-    func setFyydToken(_ key:String?){
+    public func setFyydToken(_ key:String?){
         log("setFyydToken", key as Any)
         let defaults = UserDefaults.standard
         if let k = key{
@@ -90,7 +88,7 @@ class FyydAPI {
         defaults.synchronize()
     }
     
-    class func getFyydUserID() -> Int?{
+    public class func getFyydUserID() -> Int?{
         let defaults = UserDefaults.standard
         
         if let result = defaults.value(forKey: kfyydUserID) {
@@ -102,7 +100,7 @@ class FyydAPI {
         return nil
     }
     
-    func setFyydUserID(_ key:Int?){
+    public func setFyydUserID(_ key:Int?){
         log("setFyydUserID", key as Any)
         let defaults = UserDefaults.standard
         if let k = key{

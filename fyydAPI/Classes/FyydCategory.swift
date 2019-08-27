@@ -8,12 +8,12 @@
 
 import Foundation
 
-class FyydCategory{
-    let identifier:Int
-    let slug:String
-    let image:String
-    let name:String
-    init(identifier id:Int, andSlug slug:String, andName name:String, andImage image:String){
+public class FyydCategory{
+    public let identifier:Int
+    public let slug:String
+    public let image:String
+    public let name:String
+    public init(identifier id:Int, andSlug slug:String, andName name:String, andImage image:String){
         
         self.identifier = id
         self.slug = slug

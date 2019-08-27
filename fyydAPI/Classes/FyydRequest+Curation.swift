@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-extension FyydRequest {
+public extension FyydRequest {
     
     func loadMyCurations(callback: @escaping ([FyydCuration]?) -> Void) {
         //https://api.fyyd.de/user/collections?id=1548

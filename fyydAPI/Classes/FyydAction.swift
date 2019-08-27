@@ -8,10 +8,10 @@
 
 import Foundation
 
-class FyydAction {
+public class FyydAction {
     private let data:[String:Any]
     
-    var message: String{
+    public var message: String{
         get{
             if let message = self.data["data"] as? String{
                 return message
@@ -20,7 +20,7 @@ class FyydAction {
         }
     }
     
-    init(_ data:[String:Any]){
+    public init(_ data:[String:Any]){
         self.data = data
         
         

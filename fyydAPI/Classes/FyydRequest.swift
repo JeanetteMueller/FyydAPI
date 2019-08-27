@@ -9,22 +9,22 @@
 import Foundation
 import Alamofire
 
-enum FyydRequestStatus {
+public enum FyydRequestStatus {
     case new, loading, failed, done
 }
 
-class FyydRequest {
+public class FyydRequest {
     
-    var state: FyydRequestStatus = .new
+    public var state: FyydRequestStatus = .new
     
-    var podcasts: [FyydPodcast]?
-    var episodes: [FyydEpisode]?
-    var collections: [FyydCollection]?
-    var curations: [FyydCuration]?
+    public var podcasts: [FyydPodcast]?
+    public var episodes: [FyydEpisode]?
+    public var collections: [FyydCollection]?
+    public var curations: [FyydCuration]?
     
-    var meta: [String:Any]?
+    public var meta: [String:Any]?
     
-    init(){
+    public init(){
         
     }
 }

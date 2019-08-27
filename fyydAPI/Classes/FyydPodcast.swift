@@ -8,10 +8,10 @@
 
 import Foundation
 
-class FyydPodcast {
+public class FyydPodcast {
     private let data:[String:Any]
     
-    var feed: String{
+    public var feed: String{
         get{
             
             if let feed = data["xmlURL"] as? String{
@@ -22,7 +22,7 @@ class FyydPodcast {
             return ""
         }
     }
-    var title       : String{
+    public var title       : String{
         get{
             if let t = data["title"] as? String{
                 return t
@@ -30,7 +30,7 @@ class FyydPodcast {
             return ""
         }
     }
-    var image       : String?{
+    public var image       : String?{
         get{
             
             if let image = data["imgURL"] as? String, !image.isEqual(""){
@@ -41,8 +41,8 @@ class FyydPodcast {
             return nil
         }
     }
-    var language    : String?{   get{ return data["language"] as? String } }
-    var www         : String?{
+    public var language    : String?{   get{ return data["language"] as? String } }
+    public var www         : String?{
         get{
             
             if let html = data["htmlURL"] as? String, !html.isEqual(""){
@@ -53,11 +53,11 @@ class FyydPodcast {
             return nil
         }
     }
-    var copyright   : String?{   get{ return data["author"] as? String } }
-    var text        : String?{   get{ return data["description"] as? String } }
-    var summary     : String?{   get{ return data["subtitle"] as? String } }
+    public var copyright   : String?{   get{ return data["author"] as? String } }
+    public var text        : String?{   get{ return data["description"] as? String } }
+    public var summary     : String?{   get{ return data["subtitle"] as? String } }
     
-    var episodesCount: Int {
+    public var episodesCount: Int {
         get{
             if let count = data["count_episodes"] as? Int{
                 return count
@@ -66,7 +66,7 @@ class FyydPodcast {
         }
     }
     
-    var fyydUrl     : String?{
+    public var fyydUrl     : String?{
         get{
             if let url = data["fyydURL"] as? String, !url.isEqual(""){
                 return url
@@ -78,7 +78,7 @@ class FyydPodcast {
             return nil
         }
     }
-    var fyydId      : Int32{
+    public var fyydId      : Int32{
         get{
             if let id = data["id"] as? Int32{
                 return id
@@ -86,7 +86,7 @@ class FyydPodcast {
             return -1
         }
     }
-    var fyydSlug    : String?{   get{ return data["slug"] as? String } }
+    public var fyydSlug    : String?{   get{ return data["slug"] as? String } }
     
     
     

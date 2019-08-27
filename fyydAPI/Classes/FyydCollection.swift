@@ -8,10 +8,10 @@
 
 import Foundation
 
-class FyydCollection{
+public class FyydCollection{
     private let data:[String:Any]
     
-    var fyydId:Int32{
+    public var fyydId:Int32{
         get{
             
             if let value = data["id"] as? Int32{
@@ -20,7 +20,7 @@ class FyydCollection{
             return -1
         }
     }
-    var title:String?{
+    public var title:String?{
         get{
             
             if let value = data["title"] as? String{
@@ -29,7 +29,7 @@ class FyydCollection{
             return nil
         }
     }
-    var desciption:String?{
+    public var desciption:String?{
         get{
             
             if let value = data["desciption"] as? String{
@@ -38,7 +38,7 @@ class FyydCollection{
             return nil
         }
     }
-    var layoutImageURL: String?{
+    public var layoutImageURL: String?{
         get{
             
             if let value = data["layoutImageURL"] as? String{
@@ -48,7 +48,7 @@ class FyydCollection{
             return nil
         }
     }
-    var thumbImageURL: String?{
+    public var thumbImageURL: String?{
         get{
             
             if let value = data["thumbImageURL"] as? String{
@@ -57,7 +57,7 @@ class FyydCollection{
             return nil
         }
     }
-    var microImageURL: String?{
+    public var microImageURL: String?{
         get{
             
             if let value = data["microImageURL"] as? String{
@@ -66,7 +66,7 @@ class FyydCollection{
             return nil
         }
     }
-    var fyydUrl: String{
+    public var fyydUrl: String{
         get{
             
             if let url = data["url"] as? String{
@@ -76,7 +76,7 @@ class FyydCollection{
         }
     }
     
-    var podcasts: [FyydPodcast]?{
+    public var podcasts: [FyydPodcast]?{
         get{
             var result = [FyydPodcast]()
             if let podcasts = data["podcasts"] as? [Any]{
@@ -99,7 +99,7 @@ class FyydCollection{
         }
     }
     
-    init(_ data:[String:Any]){
+    public init(_ data:[String:Any]){
         self.data = data
         
         

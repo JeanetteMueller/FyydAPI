@@ -8,13 +8,13 @@
 
 import Foundation
 
-let kfyydAuthClientId   :String = "fyydAuthClientId"
-let kfyydAuthToken      :String = "kfyydAuthToken"
-let kfyydUserID         :String = "kfyydUserID"
+public let kfyydAuthClientId   :String = "fyydAuthClientId"
+public let kfyydAuthToken      :String = "kfyydAuthToken"
+public let kfyydUserID         :String = "kfyydUserID"
 
-let kfyydUrlBase        :String = "https://fyyd.de"
-let kfyydUrlApi         :String = "https://api.fyyd.de"
-let kfyydUrlApiV2       :String = "https://api.fyyd.de/0.2"
+public let kfyydUrlBase        :String = "https://fyyd.de"
+public let kfyydUrlApi         :String = "https://api.fyyd.de"
+public let kfyydUrlApiV2       :String = "https://api.fyyd.de/0.2"
 
 public enum FyydAPIError {}
 
@@ -22,7 +22,7 @@ public extension FyydAPIError{
     enum Auth {
         case failed, succeed, canceled
         
-        var localizedDescription:String{
+        public var localizedDescription:String{
             get{
                 return "localizedDescription"
             }
@@ -35,7 +35,7 @@ public extension FyydAPIError{
 public typealias FyydAPILoginHandler = (FyydAPIError.Auth?) -> Swift.Void
 
 
-let FyydCategories = [
+public let FyydCategories = [
     FyydCategory(identifier: 1, andSlug:"arts", andName:"network_category_1301".localized, andImage:"kunst"),
     FyydCategory(identifier: 8, andSlug:"business", andName:"network_category_1321".localized, andImage:"wirtschaft"),
     FyydCategory(identifier: 14, andSlug:"comedy", andName:"network_category_1303".localized, andImage:"comedy"),

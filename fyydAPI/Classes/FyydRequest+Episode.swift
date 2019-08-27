@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-extension FyydRequest{
+public extension FyydRequest{
     
     func search(_ parameters:Parameters, callback: @escaping ([FyydEpisode]?) -> Void){
         

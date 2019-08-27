@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-extension FyydRequest {
+public extension FyydRequest {
     
     func loadAccountInfo(callback: @escaping ([String:Any]?) -> Void){
         //account/info

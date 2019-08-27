@@ -11,7 +11,7 @@ import Alamofire
 import SafariServices
 import CoreData
 
-extension FyydAPI {
+public extension FyydAPI {
     
     func authenticate(_ clientId:String, handler: @escaping FyydAPILoginHandler) {
         

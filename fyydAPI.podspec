@@ -7,8 +7,8 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'fyydAPI'
-  s.version          = '0.1.1'
+  s.name             = 'FyydAPI'
+  s.version          = '0.1.6'
   s.summary          = 'Swift API to work with fyyd.de'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ Swift API for iOS to work with fyyd.de
   s.source           = { :git => 'https://github.com/JeanetteMueller/fyydAPI.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/JeanetteMueller'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'fyydAPI/Classes/**/*'
   

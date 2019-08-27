@@ -8,10 +8,10 @@
 
 import Foundation
 
-class FyydCuration {
+public class FyydCuration {
     private let data:[String:Any]
 
-    var fyydId:Int32{
+    public var fyydId:Int32{
         get{
             
             if let value = data["id"] as? Int32{
@@ -20,7 +20,7 @@ class FyydCuration {
             return -1
         }
     }
-    var title:String?{
+    public var title:String?{
         get{
             
             if let value = data["title"] as? String{
@@ -29,7 +29,7 @@ class FyydCuration {
             return nil
         }
     }
-    var desciption:String?{
+    public var desciption:String?{
         get{
             
             if let value = data["desciption"] as? String{
@@ -38,7 +38,7 @@ class FyydCuration {
             return nil
         }
     }
-    var layoutImageURL: String?{
+    public var layoutImageURL: String?{
         get{
             
             if let value = data["layoutImageURL"] as? String{
@@ -47,7 +47,7 @@ class FyydCuration {
             return nil
         }
     }
-    var thumbImageURL: String?{
+    public var thumbImageURL: String?{
         get{
             
             if let value = data["thumbImageURL"] as? String{
@@ -56,7 +56,7 @@ class FyydCuration {
             return nil
         }
     }
-    var microImageURL: String?{
+    public var microImageURL: String?{
         get{
             
             if let value = data["microImageURL"] as? String{
@@ -65,7 +65,7 @@ class FyydCuration {
             return nil
         }
     }
-    var isPublic: Bool{
+    public var isPublic: Bool{
         get{
             
             if let pub = data["public"] as? Int{
@@ -74,7 +74,7 @@ class FyydCuration {
             return false
         }
     }
-    var url: String{
+    public var url: String{
         get{
             
             if let url = data["url"] as? String{
@@ -83,7 +83,7 @@ class FyydCuration {
             return ""
         }
     }
-    var xmlURL: String{
+    public var xmlURL: String{
         get{
             
             if let url = data["xmlURL"] as? String{
@@ -93,7 +93,7 @@ class FyydCuration {
         }
     }
     
-    init(_ data:[String:Any]){
+    public init(_ data:[String:Any]){
         self.data = data
         
         

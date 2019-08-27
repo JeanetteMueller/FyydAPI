@@ -8,10 +8,10 @@
 
 import Foundation
 
-class FyydEpisode {
+public class FyydEpisode {
     private let data:[String:Any]
     
-    var title       : String{
+    public var title       : String{
         get{
             if let title = data["title"] as? String{
                 return title
@@ -20,7 +20,7 @@ class FyydEpisode {
         }
     }
     
-    var fyydUrl     : String?{
+    public var fyydUrl     : String?{
         get{
             if let url = data["fyydURL"] as? String, !url.isEqual(""){
                 return url
@@ -32,7 +32,7 @@ class FyydEpisode {
             return nil
         }
     }
-    var fyydId      : Int32{
+    public var fyydId      : Int32{
         get{
             if let id = data["id"] as? Int32{
                 return id
@@ -41,7 +41,7 @@ class FyydEpisode {
         }
     }
     
-    init(_ data:[String:Any]){
+    public init(_ data:[String:Any]){
         self.data = data
         
         

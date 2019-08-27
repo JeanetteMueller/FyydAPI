@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-extension FyydRequest {
+public extension FyydRequest {
     
     func loadPodcast(by identifier:Int, callback: @escaping (FyydPodcast?) -> Void) {
         // https://api.fyyd.de/podcast/show?id=85
