@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'fyydAPI'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Swift API to work with fyyd.de'
 
 # This description is used to generate tags and improve search results.
