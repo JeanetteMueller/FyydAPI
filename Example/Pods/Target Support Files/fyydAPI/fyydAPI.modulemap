@@ -1,0 +1,6 @@
+framework module fyydAPI {
+  umbrella header "fyydAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}
