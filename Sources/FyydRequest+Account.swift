@@ -18,7 +18,7 @@ extension FyydRequest {
             return
         }
         
-        var urlComponents = URLComponents.init(string: kfyydUrlApi)!
+        var urlComponents = URLComponents(string: kfyydUrlApi)!
         
         urlComponents.path = "/account/info"
         
@@ -33,7 +33,7 @@ extension FyydRequest {
                 "Authorization": "Bearer \(token)"
             ]
         }
-        let aRequest = self.sessionManager.request(url, parameters: [:], headers: headers)
+        let aRequest = FyydManager.shared.sessionManager.request(url, parameters: [:], headers: headers)
         
         
         aRequest.validate().responseJSON(completionHandler: { (response) in
@@ -44,7 +44,7 @@ extension FyydRequest {
             case .success:
                 if let data = response.result.value as? [String:Any]{
                     
-                    print(data)
+                    log(data)
                     
                     
                     self.state = .done
@@ -59,15 +59,15 @@ extension FyydRequest {
                     
                     switch httpResponse.statusCode{
                     case 401:
-                        print("passwort benötigt")
+                        log("passwort benötigt")
                         
                         break
                     default:
-                        print("anderer Fehler", error as Any)
+                        log("anderer Fehler", error as Any)
                         break
                     }
                 }else{
-                    print("anderer Fehler ohne response", error as Any)
+                    log("anderer Fehler ohne response", error as Any)
                 }
             }
             callback(d)

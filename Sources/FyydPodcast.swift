@@ -14,10 +14,10 @@ class FyydPodcast {
     var feed: String{
         get{
             
-            if let feed = data["xmlURL"]{
-                return feed as! String
-            }else if let feed = data["xml_url"]{
-                return feed as! String
+            if let feed = data["xmlURL"] as? String{
+                return feed
+            }else if let feed = data["xml_url"] as? String{
+                return feed
             }
             return ""
         }
@@ -73,7 +73,7 @@ class FyydPodcast {
             }else if let url = data["url_fyyd"] as? String, !url.isEqual(""){
                 return url
             }else if self.fyydId > 0{
-                return String.init(format: "https://fyyd.de/podcast/%d", self.fyydId)
+                return String(format: "https://fyyd.de/podcast/%d", self.fyydId)
             }
             return nil
         }

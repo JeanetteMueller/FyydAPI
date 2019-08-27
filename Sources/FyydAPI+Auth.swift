@@ -21,13 +21,13 @@ extension FyydAPI {
         
         self.authHandler = handler
         
-        var urlComponents = URLComponents.init(string: kfyydUrlBase)!
+        var urlComponents = URLComponents(string: kfyydUrlBase)!
         
         urlComponents.path = "/oauth/authorize"
         
         var query = [URLQueryItem]()
         
-        query.append(URLQueryItem.init(name: "client_id", value: clientId))
+        query.append(URLQueryItem(name: "client_id", value: clientId))
         
         urlComponents.queryItems = query
         
@@ -35,14 +35,14 @@ extension FyydAPI {
             return
         }
         
-        let svc = SFSafariViewController.init(url: url)
+        let svc = SFSafariViewController(url: url)
         
         if let appDelegate = UIApplication.shared.delegate{
             
             if let root = appDelegate.window??.rootViewController{
                 
                 root.present(svc, animated: true, completion: {
-                    print("interner safari ist offen")
+                    log("interner safari ist offen")
                 })
             }
         }
@@ -56,7 +56,7 @@ extension FyydAPI {
     func handleOpen(_ url:URL) -> Bool{
         
         if let fragment = url.fragment{
-            if fragment.substring(to: 5) == "token"{
+            if fragment.subString(to: 5) == "token"{
                 
                 let fragmentParts = fragment.components(separatedBy: "=")
                 if fragmentParts.count == 2{
@@ -68,7 +68,7 @@ extension FyydAPI {
                             
                             if let id = data?["id"]  as? Int{
                                 self.setFyydUserID(id)
-                                print("got User ID")
+                                log("got User ID")
                             }
                             
                         })

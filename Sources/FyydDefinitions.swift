@@ -14,11 +14,12 @@ let kfyydUserID         :String = "kfyydUserID"
 
 let kfyydUrlBase        :String = "https://fyyd.de"
 let kfyydUrlApi         :String = "https://api.fyyd.de"
+let kfyydUrlApiV2       :String = "https://api.fyyd.de/0.2"
 
 public enum FyydAPIError {}
 
 public extension FyydAPIError{
-    public enum Auth {
+    enum Auth {
         case failed, succeed, canceled
         
         var localizedDescription:String{

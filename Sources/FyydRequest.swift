@@ -24,14 +24,7 @@ class FyydRequest {
     
     var meta: [String:Any]?
     
-    var sessionManager: SessionManager
-    
     init(){
         
-        let configuration = URLSessionConfiguration.default
-        configuration.urlCache = nil
-        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-        
-        self.sessionManager = Alamofire.SessionManager(configuration: configuration)
     }
 }

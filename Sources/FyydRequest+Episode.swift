@@ -20,7 +20,7 @@ extension FyydRequest{
             return
         }
         
-        var urlComponents = URLComponents.init(string: kfyydUrlApi)!
+        var urlComponents = URLComponents(string: kfyydUrlApi)!
 
         
         urlComponents.path = "/episode/search"
@@ -38,7 +38,7 @@ extension FyydRequest{
         }
 
     
-        let aRequest = self.sessionManager.request(url, method: .post, parameters: parameters, headers: headers)
+        let aRequest = FyydManager.shared.sessionManager.request(url, method: .post, parameters: parameters, headers: headers)
 
         aRequest.validate().responseJSON(completionHandler: { (response) in
             
@@ -50,16 +50,18 @@ extension FyydRequest{
                     
                     if let items = data["data"] as? [Any]{
                         for item in items{
-                            let i = item as! [String:Any]
-                            if parameters["title"] as? String == i["title"] as? String{
-                                e.append(FyydEpisode.init(i))
+                            if let i = item as? [String:Any]{
+                                if parameters["title"] as? String == i["title"] as? String{
+                                    e.append(FyydEpisode(i))
+                                }
                             }
                         }
                     }else if let items = data["data"] as? [String:Any]{
                         for item in Array(items.values){
-                            let i = item as! [String:Any]
-                            if parameters["title"] as? String == i["title"] as? String{
-                                e.append(FyydEpisode.init(i))
+                            if let i = item as? [String:Any]{
+                                if parameters["title"] as? String == i["title"] as? String{
+                                    e.append(FyydEpisode(i))
+                                }
                             }
                         }
                     }
@@ -81,15 +83,15 @@ extension FyydRequest{
                     
                     switch httpResponse.statusCode{
                     case 401:
-                        print("passwort benötigt")
+                        log("passwort benötigt")
                         
                         break
                     default:
-                        print("anderer Fehler", error as Any)
+                        log("anderer Fehler", error as Any)
                         break
                     }
                 }else{
-                    print("anderer Fehler ohne response", error as Any)
+                    log("anderer Fehler ohne response", error as Any)
                 }
             }
             callback(self.episodes)
@@ -108,7 +110,7 @@ extension FyydRequest{
             ]
         }
         
-        var urlComponents = URLComponents.init(string: kfyydUrlApi)!
+        var urlComponents = URLComponents(string: kfyydUrlApi)!
 
         urlComponents.path = "/curate"
         
@@ -116,7 +118,7 @@ extension FyydRequest{
             return
         }
         
-        let aRequest = self.sessionManager.request(url, method: .post, parameters: parameters, headers: headers)
+        let aRequest = FyydManager.shared.sessionManager.request(url, method: .post, parameters: parameters, headers: headers)
         aRequest.validate().responseJSON(completionHandler: { (response) in
             
             var result:FyydAction?
@@ -125,7 +127,7 @@ extension FyydRequest{
                 if let data = response.result.value as? [String:Any]{
                     
                     self.state = .done
-                    result = FyydAction.init(data)
+                    result = FyydAction(data)
                 }
                 
             case .failure(let error):
@@ -135,17 +137,17 @@ extension FyydRequest{
                     
                     switch httpResponse.statusCode{
                     case 401:
-                        print("passwort benötigt")
-                        result = FyydAction.init(["data":"passwort benötigt"])
+                        log("passwort benötigt")
+                        result = FyydAction(["data":"passwort benötigt"])
                         break
                     default:
-                        print("anderer Fehler", error as Any)
-                        result = FyydAction.init(["data":"anderer Fehler"])
+                        log("anderer Fehler", error as Any)
+                        result = FyydAction(["data":"anderer Fehler"])
                         break
                     }
                 }else{
-                    print("anderer Fehler ohne response", error as Any)
-                    result = FyydAction.init(["data":"anderer Fehler ohne response"])
+                    log("anderer Fehler ohne response", error as Any)
+                    result = FyydAction(["data":"anderer Fehler ohne response"])
                 }
                 
             }

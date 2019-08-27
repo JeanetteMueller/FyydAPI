@@ -57,7 +57,7 @@ class FyydAPI {
     }
     
     func setFyydCliendId(_ key:String?){
-        print("setFyydCliendId", key as Any)
+        log("setFyydCliendId", key as Any)
         let defaults = UserDefaults.standard
         if let k = key{
             defaults.set(k, forKey:kfyydAuthClientId)
@@ -80,7 +80,7 @@ class FyydAPI {
     }
     
     func setFyydToken(_ key:String?){
-        print("setFyydToken", key as Any)
+        log("setFyydToken", key as Any)
         let defaults = UserDefaults.standard
         if let k = key{
             defaults.set(k, forKey:kfyydAuthToken)
@@ -103,7 +103,7 @@ class FyydAPI {
     }
     
     func setFyydUserID(_ key:Int?){
-        print("setFyydUserID", key as Any)
+        log("setFyydUserID", key as Any)
         let defaults = UserDefaults.standard
         if let k = key{
             defaults.set(k, forKey:kfyydUserID)

@@ -27,7 +27,7 @@ class FyydEpisode {
             }else if let url = data["url_fyyd"] as? String, !url.isEqual(""){
                 return url
             }else if self.fyydId > 0{
-                return String.init(format: "https://fyyd.de/episode/%d", self.fyydId)
+                return String(format: "https://fyyd.de/episode/%d", self.fyydId)
             }
             return nil
         }

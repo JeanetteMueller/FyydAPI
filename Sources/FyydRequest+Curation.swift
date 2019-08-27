@@ -18,7 +18,7 @@ extension FyydRequest {
             return
         }
         
-        var urlComponents = URLComponents.init(string: kfyydUrlApi)!
+        var urlComponents = URLComponents(string: kfyydUrlApi)!
         
         urlComponents.path = "/account/curations"
         
@@ -33,7 +33,7 @@ extension FyydRequest {
                 "Authorization": "Bearer \(token)"
             ]
         }
-        let aRequest = self.sessionManager.request(url, parameters: [:], headers: headers)
+        let aRequest = FyydManager.shared.sessionManager.request(url, parameters: [:], headers: headers)
         
         aRequest.validate().responseJSON(completionHandler: { (response) in
             
@@ -45,11 +45,15 @@ extension FyydRequest {
                     
                     if let items = data["data"] as? [Any]{
                         for item in items{
-                            c.append(FyydCuration.init(item as! [String:Any]))
+                            if let i = item as? [String:Any]{
+                                c.append(FyydCuration(i))
+                            }
                         }
                     }else if let items = data["data"] as? [String:Any]{
                         for item in Array(items.values){
-                            c.append(FyydCuration.init(item as! [String:Any]))
+                            if let i = item as? [String:Any]{
+                                c.append(FyydCuration(i))
+                            }
                         }
                     }
                     if c.count > 0{
@@ -66,15 +70,15 @@ extension FyydRequest {
                     
                     switch httpResponse.statusCode{
                     case 401:
-                        print("passwort benötigt")
+                        log("passwort benötigt")
                         
                         break
                     default:
-                        print("anderer Fehler", error as Any)
+                        log("anderer Fehler", error as Any)
                         break
                     }
                 }else{
-                    print("anderer Fehler ohne response", error as Any)
+                    log("anderer Fehler ohne response", error as Any)
                 }
             }
             callback(self.curations)
@@ -88,13 +92,13 @@ extension FyydRequest {
             return
         }
         
-        var urlComponents = URLComponents.init(string: kfyydUrlApi)!
+        var urlComponents = URLComponents(string: kfyydUrlApi)!
         var query = [URLQueryItem]()
         
         urlComponents.path = "/user/collections"
         
         if let userID = id{
-            query.append(URLQueryItem.init(name: "id", value: String.init(format: "%d", userID)))
+            query.append(URLQueryItem(name: "id", value: String(format: "%d", userID)))
         }
         
         urlComponents.queryItems = query
@@ -104,7 +108,7 @@ extension FyydRequest {
         }
         self.state = .loading
         
-        let aRequest = self.sessionManager.request(url)
+        let aRequest = FyydManager.shared.sessionManager.request(url)
         
         aRequest.validate().responseJSON(completionHandler: { (response) in
             
@@ -116,11 +120,15 @@ extension FyydRequest {
                     
                     if let items = data["data"] as? [Any]{
                         for item in items{
-                            c.append(FyydCuration.init(item as! [String:Any]))
+                            if let i = item as? [String:Any]{
+                                c.append(FyydCuration(i))
+                            }
                         }
                     }else if let items = data["data"] as? [String:Any]{
                         for item in Array(items.values){
-                            c.append(FyydCuration.init(item as! [String:Any]))
+                            if let i = item as? [String:Any]{
+                                c.append(FyydCuration(i))
+                            }
                         }
                     }
                     if c.count > 0{
@@ -137,15 +145,15 @@ extension FyydRequest {
                     
                     switch httpResponse.statusCode{
                     case 401:
-                        print("passwort benötigt")
+                        log("passwort benötigt")
                         
                         break
                     default:
-                        print("anderer Fehler", error as Any)
+                        log("anderer Fehler", error as Any)
                         break
                     }
                 }else{
-                    print("anderer Fehler ohne response", error as Any)
+                    log("anderer Fehler ohne response", error as Any)
                 }
             }
             callback(self.curations)

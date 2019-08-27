@@ -18,12 +18,12 @@ extension FyydRequest {
             return
         }
         
-        var urlComponents = URLComponents.init(string: kfyydUrlApi)!
+        var urlComponents = URLComponents(string: kfyydUrlApi)!
         
         urlComponents.path = "/podcast/show"
         
         var query = [URLQueryItem]()
-        query.append(URLQueryItem.init(name: "id", value: String.init(format: "%d", identifier)))
+        query.append(URLQueryItem(name: "id", value: String(format: "%d", identifier)))
         urlComponents.queryItems = query
         
         guard let url = urlComponents.url else {
@@ -31,7 +31,7 @@ extension FyydRequest {
         }
         self.state = .loading
         
-        let aRequest = self.sessionManager.request(url)
+        let aRequest = FyydManager.shared.sessionManager.request(url)
         
         //        if let user = feedRecord.username, let pass = feedRecord.password{
         //            if !user.isEqual("") && !pass.isEqual(""){
@@ -48,7 +48,7 @@ extension FyydRequest {
                     if let item = data["data"] as? [String:Any]{
                         
                         self.state = .done
-                        callback(FyydPodcast.init(item))
+                        callback(FyydPodcast(item))
                     }
                     
                 }
@@ -59,22 +59,22 @@ extension FyydRequest {
                     
                     switch httpResponse.statusCode{
                     case 401:
-                        print("passwort benötigt")
+                        log("passwort benötigt")
                         
                         break
                     default:
-                        print("anderer Fehler", error as Any)
+                        log("anderer Fehler", error as Any)
                         break
                     }
                 }else{
-                    print("anderer Fehler ohne response", error as Any)
+                    log("anderer Fehler ohne response", error as Any)
                 }
             }
             callback(nil)
         })
         
     }
-    func loadPodcasts(_ count:Int, offset start:Int = 0, searchTerm:String? = nil, categorie:FyydCategory? = nil, callback: @escaping ([FyydPodcast]?, Int) -> Void){
+    func loadPodcasts(_ count:Int, offset start:Int = 0, searchTerm:String? = nil, categorie:FyydCategory? = nil, recommendId:Int32? = nil, recommendSlug:String? = nil, apiBase: String = kfyydUrlApi, callback: @escaping ([FyydPodcast]?, Int) -> Void){
         
         //allgemein alle podcasts sortiert nach ranking
         //https://api.fyyd.de/podcasts/show?count=99
@@ -89,25 +89,41 @@ extension FyydRequest {
             return
         }
         
-        var urlComponents = URLComponents.init(string: kfyydUrlApi)!
+        var urlComponents = URLComponents(string: apiBase)!
         var query = [URLQueryItem]()
         let params = [String:Any]()
         let method: HTTPMethod = .get
         
         if let search = searchTerm{
-            urlComponents.path = String.init(format: "/search/%@/%d", search.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)!, count);
+            
+            urlComponents.path = String(format: "/search/%@/%d", search.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)!, count);
 
         }else if let cat = categorie{
+            
             urlComponents.path = "/category"
             
-            query.append(URLQueryItem.init(name: "category_id", value: String.init(format: "%d", cat.identifier)))
+            query.append(URLQueryItem(name: "category_id", value: String(format: "%d", cat.identifier)))
+            
+        }else if let rID = recommendId{
+          
+            urlComponents.path = urlComponents.path + "/podcast/recommend"
+            
+            query.append(URLQueryItem(name: "podcast_id", value: String(format: "%d", rID)))
+            
+        }else if let rSlug = recommendSlug{
+            
+            urlComponents.path = urlComponents.path + "/podcast/recommend"
+            
+            query.append(URLQueryItem(name: "podcast_slug", value: rSlug))
+            
         }else{
+            
             urlComponents.path = "/podcasts/show"
         }
         
-        query.append(URLQueryItem.init(name: "count", value: String.init(format: "%d", count)))
+        query.append(URLQueryItem(name: "count", value: String(format: "%d", count)))
         if start > 0{
-            query.append(URLQueryItem.init(name: "from", value: String.init(format: "%d", start)))
+            query.append(URLQueryItem(name: "from", value: String(format: "%d", start)))
         }
         
         urlComponents.queryItems = query
@@ -124,7 +140,9 @@ extension FyydRequest {
             ]
         }
         
-        let aRequest = self.sessionManager.request(url, method: method, parameters: params, headers: headers)
+        log("url: ", url.absoluteString)
+        
+        let aRequest = FyydManager.shared.sessionManager.request(url, method: method, parameters: params, headers: headers)
         
         //        if let user = feedRecord.username, let pass = feedRecord.password{
         //            if !user.isEqual("") && !pass.isEqual(""){
@@ -142,13 +160,23 @@ extension FyydRequest {
                     
                     if let items = data["data"] as? [Any]{
                         for item in items{
-                            p.append(FyydPodcast.init(item as! [String:Any]))
+                            if let i = item as? [String:Any]{
+                                p.append(FyydPodcast(i))
+                            }
                         }
                     }else if let items = data["data"] as? [String:Any]{
                         for item in Array(items.values){
-                            p.append(FyydPodcast.init(item as! [String:Any]))
+                            if let i = item as? [String:Any]{
+                                p.append(FyydPodcast(i))
+                            }
+                        }
+                    }else if let items = data["data"] as? [[String:Any]]{
+                        for item in items{
+                            p.append(FyydPodcast(item))
+                            
                         }
                     }
+                    
                     if p.count > 0{
                         self.podcasts = p
                     }
@@ -167,15 +195,15 @@ extension FyydRequest {
                     
                     switch httpResponse.statusCode{
                     case 401:
-                        print("passwort benötigt")
+                        log("passwort benötigt")
                         
                         break
                     default:
-                        print("anderer Fehler", error as Any)
+                        log("anderer Fehler", error as Any)
                         break
                     }
                 }else{
-                    print("anderer Fehler ohne response", error as Any)
+                    log("anderer Fehler ohne response", error as Any)
                 }
             }
             callback(self.podcasts, start)

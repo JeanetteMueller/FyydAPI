@@ -81,11 +81,15 @@ class FyydCollection{
             var result = [FyydPodcast]()
             if let podcasts = data["podcasts"] as? [Any]{
                 for item in podcasts{
-                    result.append(FyydPodcast.init(item as! [String:Any]))
+                    if let i = item as? [String:Any]{
+                        result.append(FyydPodcast(i))
+                    }
                 }
             }else if let items = data["podcasts"] as? [String:Any]{
                 for item in Array(items.values){
-                    result.append(FyydPodcast.init(item as! [String:Any]))
+                    if let i = item as? [String:Any]{
+                        result.append(FyydPodcast(i))
+                    }
                 }
             }
             if result.count > 0{
